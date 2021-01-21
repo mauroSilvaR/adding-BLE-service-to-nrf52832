@@ -7,6 +7,6 @@ these 3 files before building the project in KEIL.
 
 It's also a good idea to make the copy inside the SDK examples folder itself since changing this location might cause some problems with the include paths in KEIL
 
-the folder "2" contains files for the implementation of a new service (meu_serv).
+The folder "2" contains files for the implementation of a new service (meu_serv).
 
 
