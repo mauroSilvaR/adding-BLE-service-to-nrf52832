@@ -100,7 +100,7 @@ uint32_t meu_serv_init(meu_serv_t * p_lbs, const meu_serv_init_t * p_lbs_init)
     // Initialize service structure.
     p_lbs->log_write_handler = p_lbs_init->log_write_handler;//digo que o handler da struc de inicialização vai ser igual ao
 	                                                           //handler da struc do serviço em si
-                                                        //não faz sentido?Não! Mas nós seguimos a nordic pra não dar problema
+                                                        
     // Adiciono o serviço na pilha BLE!!!!.
     ble_uuid128_t base_uuid = {SERV_UUID_BASE};//falo que o UUID base do meu serviço vai ser o uuid base que falei lá no .h
 		                                          //dessa forma mudando no .h eu já mudo aqui sem esforço 
@@ -119,8 +119,8 @@ uint32_t meu_serv_init(meu_serv_t * p_lbs, const meu_serv_init_t * p_lbs_init)
     memset(&add_char_params, 0, sizeof(add_char_params));
     add_char_params.uuid             = LBS_UUID_LED_CHAR;//UUID do srrviço do led defnido lá em cima
     add_char_params.uuid_type        = p_lbs->uuid_type;//tipo do atributo, diz que isso é uma característica.
-    add_char_params.init_len         = sizeof(uint8_t);//acho que é o tamanho da característica
-    add_char_params.max_len          = sizeof(uint8_t);//acho que é o tamanho máximo da característica
+    add_char_params.init_len         = sizeof(uint8_t);//é o tamanho da característica
+    add_char_params.max_len          = sizeof(uint8_t);//é o tamanho máximo da característica
     add_char_params.char_props.read  = 1;//define que as propriedadades da característica vão poder ser lidas
     add_char_params.char_props.write = 1;//define que as propriedadades da característica vão poder ser escritas
 		
@@ -131,7 +131,7 @@ uint32_t meu_serv_init(meu_serv_t * p_lbs, const meu_serv_init_t * p_lbs_init)
     return characteristic_add(p_lbs->service_handle, &add_char_params, &p_lbs->log_char_handles);
 }
 
-//acho que não vou precisar
+//acho que não vou precisar por enquanto
 /*
 uint32_t ble_lbs_on_button_change(uint16_t conn_handle, ble_lbs_t * p_lbs, uint8_t button_state)
 {
